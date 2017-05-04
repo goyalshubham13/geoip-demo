@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+      function getAddress () {
+        $.post ('/api/getAddress',{ipAddress:$('#ipAddress').val ()}, function(data, status){
+          console.log (data);
+          $('#response').html ("<pre>" + JSON.stringify(data, null, 4)+"</pre>");
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p></p>
+    <div>
+      Enter your IP: <input type="text" id="ipAddress" value="27.118.34.33" /> <button type="button" onclick="getAddress ();">Get Address!</button>
+    </div>
+    </br>
+    <div id="response"></div>
+  </body>
+</html>
